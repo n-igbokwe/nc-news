@@ -18,6 +18,7 @@ function App() {
         <Route path="/articles/:article_id" element={<SingleArticle/>}></Route>
         <Route path="/articles/:topic" element={<ArticleContainer/>}></Route>
         <Route path="/users/:user_id" element={<User/>}></Route>
+          {/* //path=/* is a wild card and matches anything not specified */}
       </Routes>
   
     </div>

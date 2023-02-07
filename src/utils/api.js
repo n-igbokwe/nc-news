@@ -34,3 +34,30 @@ export const getCommeentsWithArticleId = (article_id) => {
         console.log(err)
     })
 }
+
+// ticket7
+export const upvoteArticletWithId = (article_id) => {
+    return articleAPI
+    .patch(`/articles/${article_id}`,
+     {inc_votes : 1},
+     {headers: {'Content-type' : 'application/json'}})
+    .then((data) => {
+        return data
+    })
+    .catch((err) => {
+        console.log(err)
+    })
+}
+
+export const downvoteArticletWithId = (article_id) => {
+    return articleAPI
+    .patch(`/articles/${article_id}`,
+     {inc_votes : -1},
+     {headers: {'Content-type' : 'application/json'}})
+    .then((data) => {
+        return data
+    })
+    .catch((err) => {
+        console.log(err)
+    })
+}

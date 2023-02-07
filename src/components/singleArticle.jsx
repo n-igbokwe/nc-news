@@ -1,8 +1,9 @@
 import React from 'react'
 import { useEffect, useState} from 'react'
 import {useParams} from 'react-router-dom'
-import { getCommeentsWithArticleId, getSingleArticle } from '../utils/api'
+import { downvoteArticletWithId, getCommeentsWithArticleId, getSingleArticle, upvoteArticletWithId } from '../utils/api'
 import {Link} from 'react-router-dom'
+import Comments from './comments'
 
 function SingleArticle() {
 
@@ -15,14 +16,49 @@ function SingleArticle() {
         .then(({data : {article}}) => {
             setSingleArticle(article)
         })
-    })
+        .catch((err) => {
+          console.log(err)
+        })
+    }, [article_id])
 
     useEffect(() => {
       getCommeentsWithArticleId(article_id)
       .then(({data : {comments}}) => {
         setArticleComments(comments)
       })
-    })
+    }, [article_id])
+
+    const upvote = (id) => {
+      setSingleArticle((currArticle) => {
+        return currArticle.map((article) => {
+          if (article.article_id === id){
+            return {...article, votes : article.votes + 1}
+          }
+          return article
+        })
+      })
+      upvoteArticletWithId(article_id)
+      .then((data) => {
+        console.log(data)
+      })
+    }
+
+    const downvote = (article_id) => {
+      setSingleArticle((currArticle) => {
+        return currArticle.map((article) => {
+          if (article.article_id === article_id){
+            return {...article, votes : article.votes - 1}
+          }
+          return article
+        })
+      })
+      downvoteArticletWithId(article_id)
+      .then((data) => {
+        console.log(data)
+      })
+    }
+
+
   return (
     <section>
         {singleArticle.length !== 0 ? (
@@ -42,19 +78,14 @@ function SingleArticle() {
             <h3>{article.body}</h3>
             <h4> Published : {article.created_at}</h4>
             <h4>Votes :{article.votes} | Comments: {article.comment_count} </h4>
-            <ul className='comments-section'>
-            {articleComments.map((comment) => {
-              return (
-                <li key={comment.comment_id}>
-                  Author: {comment.author} | Votes: {comment.votes} | Created at: {comment.created_at}
-                  <br></br>
-                  {comment.body}
-                  <br></br>
-                  <br></br>
-                </li>
-              )
-            })}
-            </ul>
+            <button onClick={() => upvote(article.article_id)}>UPVOTE</button> | <button onClick={() => downvote(article.article_id)}>DOWNVOTE</button>
+            <section>
+              {articleComments.length !== 0 ? (
+                articleComments.map((comment) => <Comments key={comment.comment_id} comment={comment} articleComments={articleComments} setArticleComments={setArticleComments}/>)
+              ) : (
+                <p>Loading Comments</p>
+              )}
+            </section>
             </>
 
             )) : (<p> Loading</p>)
