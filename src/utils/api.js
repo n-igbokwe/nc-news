@@ -11,9 +11,22 @@ export const getAllArticles = () => {
     })
 }
 //ticket5
-export const getSingleArticle = (article) => {
+export const getSingleArticle = (article_id) => {
     return articleAPI
-    .get(`/articles/${article}`)
+    .get(`/articles/${article_id}`)
+    .then((data) => {
+        return data
+    })
+    .catch((err)=> {
+        console.log(err)
+    })
+}
+
+//ticket6
+
+export const getCommeentsWithArticleId = (article_id) => {
+    return articleAPI
+    .get(`/articles/${article_id}/comments`)
     .then((data) => {
         return data
     })
