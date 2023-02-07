@@ -7,6 +7,8 @@ import Navbar from './components/navbar';
 import SingleArticle from './components/singleArticle';
 import User from './components/user';
 import {Route, Routes} from 'react-router-dom'
+import TopicsPage from './components/topicsPage';
+import SingleTopicPage from './components/singleTopicPage';
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
         <Route path="/articles/:article_id" element={<SingleArticle/>}></Route>
         <Route path="/articles/:topic" element={<ArticleContainer/>}></Route>
         <Route path="/users/:user_id" element={<User/>}></Route>
+        <Route path="/topics" element={<TopicsPage/>}></Route>
+        <Route path="/topics/:topic" element={<SingleTopicPage/>}></Route>
       </Routes>
   
     </div>

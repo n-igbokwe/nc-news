@@ -34,3 +34,40 @@ export const getCommeentsWithArticleId = (article_id) => {
         console.log(err)
     })
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//ticket 8
+export const getTopics = () => {
+    return articleAPI
+    .get(`/topics`)
+    .then((data) => {
+        return data
+    })
+    .catch((err)=> {
+        console.log(err)
+    })
+}

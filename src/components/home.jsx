@@ -25,7 +25,7 @@ function Home() {
                     {article.title}
                     </Link>
                     <br></br>
-                    <Link to={`/articles/${article.topic}`}>
+                    <Link to={`/topics/${article.topic}`}>
                       {article.topic}  
                     </Link>
                     <br></br>
