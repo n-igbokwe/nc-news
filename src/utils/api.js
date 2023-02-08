@@ -37,30 +37,34 @@ export const getCommeentsWithArticleId = (article_id) => {
 
 
 
+export const upvoteArticletWithId = (article_id) => {
+    return articleAPI
+    .patch(`/articles/${article_id}`,
+     {inc_votes : 1},
+     {headers: {'Content-type' : 'application/json'}})
+    .then((data) => {
+        return data
+    })
+    .catch((err) => {
+        console.log(err)
+    })
+}
+
+export const downvoteArticletWithId = (article_id) => {
+    return articleAPI
+    .patch(`/articles/${article_id}`,
+     {inc_votes : -1},
+     {headers: {'Content-type' : 'application/json'}})
+    .then((data) => {
+        return data
+    })
+    .catch((err) => {
+      console.log(err)
+      })
+     }
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//ticket 8
 export const getTopics = () => {
     return articleAPI
     .get(`/topics`)
