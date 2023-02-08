@@ -65,7 +65,7 @@ function SingleArticle() {
             singleArticle.map((article) =>
             <>
             <h2 key={article.article_id}>{article.title}</h2>
-            <Link to={`/articles/${article.topic}`}>Topic: {article.topic}
+            <Link to={`/topics/${article.topic}`}>Topic: {article.topic}
             </Link>
             <br></br>
             <br></br>

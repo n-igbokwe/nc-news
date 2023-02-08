@@ -35,7 +35,8 @@ export const getCommeentsWithArticleId = (article_id) => {
     })
 }
 
-// ticket7
+
+
 export const upvoteArticletWithId = (article_id) => {
     return articleAPI
     .patch(`/articles/${article_id}`,
@@ -58,6 +59,19 @@ export const downvoteArticletWithId = (article_id) => {
         return data
     })
     .catch((err) => {
+      console.log(err)
+      })
+     }
+
+
+
+export const getTopics = () => {
+    return articleAPI
+    .get(`/topics`)
+    .then((data) => {
+        return data
+    })
+    .catch((err)=> {
         console.log(err)
     })
 }
