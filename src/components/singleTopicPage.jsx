@@ -4,28 +4,38 @@ import {useParams} from 'react-router-dom'
 import {Link} from 'react-router-dom'
 import { getAllArticles } from '../utils/api';
 
-function SingleTopicPage() {
+function SingleTopicPage({sortBy, setSortBy, orderBy, setOrderBy}) {
     const [topicArticles, setTopicArticles] = useState([])
+
 
     const {topic} = useParams();
 
     useEffect(() => {
-        getAllArticles()
+        getAllArticles(topic, sortBy, orderBy)
         .then(({data : {articles}})=> {
+
             const newArticles = articles.filter((article) => {
                 if (article.topic === topic){
-                    console.log('here')
+
                     return {...article}
-                }
+                } 
             })
             setTopicArticles(newArticles)
         })
-    }, [])
+    }, [sortBy, orderBy] )
 
   return (
     <section>
         <h2>{topic}</h2>
-        <ul className="topic-articles">
+        Sort By:
+        <button onClick={() => setSortBy('title')}> title</button>
+        <button onClick={() => setSortBy('votes')}> votes</button>
+        <button onClick={() => setSortBy('created_at')}> date</button>
+        Order:
+        <button onClick={() => setOrderBy('asc')}>asending</button>
+        <button onClick={() => setOrderBy('desc')}>descending</button>
+      
+         <ul className="topic-articles">
             {topicArticles.map((article) => {
                 return (
                     <li key={article.article_id}>

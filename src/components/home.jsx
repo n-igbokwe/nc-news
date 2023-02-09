@@ -1,22 +1,29 @@
 import React from 'react'
 import {useEffect, useState} from 'react'
-import { getAllArticles } from '../utils/api'
+import {  getAllArticlesHome } from '../utils/api'
 import { Link } from 'react-router-dom'
 
 
-function Home() {
+function Home({sortBy, setSortBy, orderBy, setOrderBy}) {
     const [allArticles, setAllArticles] = useState([])
 
     useEffect(() => {
-        getAllArticles()
-        .then(({data}) => {
-            setAllArticles(data.articles)
+        getAllArticlesHome(sortBy, orderBy)
+        .then(({data : {articles}}) => {
+            setAllArticles(articles)
         })
-    })
+    }, [sortBy, orderBy])
 
   return (
     <main>
     <h2>HOME PAGE : ALL ARTICLES</h2>
+    Sort By:
+        <button onClick={() => setSortBy('title')}> title</button>
+        <button onClick={() => setSortBy('votes')}> votes</button>
+        <button onClick={() => setSortBy('created_at')}> date</button>
+        Order:
+        <button onClick={() => setOrderBy('asc')}>asending</button>
+        <button onClick={() => setOrderBy('desc')}>descending</button>
     <ul className="all-articles-list">
         {allArticles.map((article) => {
             return (
