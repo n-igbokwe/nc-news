@@ -8,6 +8,7 @@ import { getTopics } from '../utils/api'
 function TopicsPage() {
 
     const [topics, setTopics] = useState([])
+   
 
     useEffect(() => {
         getTopics()

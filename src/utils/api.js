@@ -3,9 +3,27 @@ const articleAPI = axios.create({
     baseURL: 'https://be-news-api.onrender.com/api/'
 })
 //ticket 4
-export const getAllArticles = () => {
+export const getAllArticles = (topic, sortBy, orderBy) => {
     return articleAPI
-    .get('/articles')
+    .get('/articles', {
+        params: {
+            topic : topic,
+            sort_by : sortBy,
+            order : orderBy
+        }
+     })
+    .then((data) => {
+        return data
+    })
+}
+export const getAllArticlesHome = ( sortBy, orderBy) => {
+    return articleAPI
+    .get('/articles', {
+        params: {
+            sort_by : sortBy,
+            order : orderBy
+        }
+     })
     .then((data) => {
         return data
     })
@@ -17,9 +35,7 @@ export const getSingleArticle = (article_id) => {
     .then((data) => {
         return data
     })
-    .catch((err)=> {
-        console.log(err)
-    })
+  
 }
 
 //ticket6
@@ -30,13 +46,10 @@ export const getCommeentsWithArticleId = (article_id) => {
     .then((data) => {
         return data
     })
-    .catch((err)=> {
-        console.log(err)
-    })
+   
 }
 
-
-
+// ticket7
 export const upvoteArticletWithId = (article_id) => {
     return articleAPI
     .patch(`/articles/${article_id}`,
@@ -45,9 +58,7 @@ export const upvoteArticletWithId = (article_id) => {
     .then((data) => {
         return data
     })
-    .catch((err) => {
-        console.log(err)
-    })
+   
 }
 
 export const downvoteArticletWithId = (article_id) => {
@@ -58,12 +69,20 @@ export const downvoteArticletWithId = (article_id) => {
     .then((data) => {
         return data
     })
-    .catch((err) => {
-      console.log(err)
-      })
-     }
+  
+}
 
-
+//ticket 8 (i got the numbers wrong)
+export const postComment = (article_id, user, comment) => {
+    const postBody = {username : user,
+        comment: comment}
+    return articleAPI
+    .post(`/articles/${article_id}/comments`, postBody)
+    .then((data) => {
+        return data
+    })
+  
+}
 
 export const getTopics = () => {
     return articleAPI
@@ -76,18 +95,3 @@ export const getTopics = () => {
     })
 }
 
-//ticket 8 (i got the numbers wrong)
-export const postComment = (article_id, user, comment) => {
-    const postBody = {username : user,
-        comment: comment}
-    return articleAPI
-    .post(`/articles/${article_id}/comments`, postBody)
-    .then((data) => {
-        return data
-    })
-    .catch((err) => {
-        console.log(err)
-    })
-}
-
-// REMOVE CATHC BLOCKS FROM API UTLS FILES ^^^^^^ CATCH BLOCK IS HALWAY THROUGH PROMISE CHAIN AND THAT IS DUMB
