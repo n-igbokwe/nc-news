@@ -61,3 +61,19 @@ export const downvoteArticletWithId = (article_id) => {
         console.log(err)
     })
 }
+
+//ticket 8 (i got the numbers wrong)
+export const postComment = (article_id, user, comment) => {
+    const postBody = {username : user,
+        comment: comment}
+    return articleAPI
+    .post(`/articles/${article_id}/comments`, postBody)
+    .then((data) => {
+        return data
+    })
+    .catch((err) => {
+        console.log(err)
+    })
+}
+
+// REMOVE CATHC BLOCKS FROM API UTLS FILES ^^^^^^ CATCH BLOCK IS HALWAY THROUGH PROMISE CHAIN AND THAT IS DUMB
