@@ -1,9 +1,11 @@
 import React from 'react'
 
 
-function Comments({comment, setArticleComments}) {
 
-//this only changes comment votes on the site and not API
+function Comments({comment, setArticleComments}) {
+  
+
+//this only changes comment votes on the site and not AP
 
     const upvote = (id) => {
         setArticleComments((currComments) => {
