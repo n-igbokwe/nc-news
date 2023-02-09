@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom'
 import Comments from './comments'
 import CommentAdder from './commentAdder'
 
-function SingleArticle() {
+function  SingleArticle({username}) {
 
     const [singleArticle, setSingleArticle] = useState([])
     const [articleComments, setArticleComments] = useState([])
@@ -80,10 +80,10 @@ function SingleArticle() {
             <h4> Published : {article.created_at}</h4>
             <h4>Votes :{article.votes} | Comments: {article.comment_count} </h4>
             <button onClick={() => upvote(article.article_id)}>UPVOTE</button> | <button onClick={() => downvote(article.article_id)}>DOWNVOTE</button>
-            <CommentAdder setArticleComments={setArticleComments} article_id={article_id}/>
+            <CommentAdder setArticleComments={setArticleComments} article_id={article_id} username={username}/>
             <section>
               {articleComments.length !== 0 ? (
-                articleComments.map((comment) => <Comments key={comment.comment_id} comment={comment} articleComments={articleComments} setArticleComments={setArticleComments}/>)
+                articleComments.map((comment) => <Comments key={comment.comment_id} comment={comment} articleComments={articleComments} setArticleComments={setArticleComments} username={username}/>)
               ) : (
                 <p>Loading Comments</p>
               )}

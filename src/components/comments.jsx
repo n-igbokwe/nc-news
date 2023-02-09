@@ -1,8 +1,11 @@
 import React from 'react'
+import { deleteComment } from '../utils/api'
 
 
 
-function Comments({comment, setArticleComments}) {
+function Comments({comment, setArticleComments, username}) {
+
+
   
 
 //this only changes comment votes on the site and not AP
@@ -30,6 +33,28 @@ function Comments({comment, setArticleComments}) {
 
     }
 
+    const deleter = (id, author) => {
+        
+        if (author === username){
+            setArticleComments((currComments) => {
+                return currComments.filter((comment) => {
+                    if (comment.comment_id !== id){
+                        return {...comment}
+                    }
+                })
+            })
+            deleteComment(id)
+            .then((data) => {
+                console.log(data)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+        }
+    }
+
+
+
   return (
     <section>
         <ul className="comments-section">
@@ -39,7 +64,8 @@ function Comments({comment, setArticleComments}) {
         {comment.body}
         <br></br>
         <br></br>
-        <button onClick={() => upvote(comment.comment_id)}>UPVOTE</button> | <button onClick={() => downvote(comment.comment_id)}>DOWNVOTE</button>
+        <button onClick={() => upvote(comment.comment_id)}>UPVOTE</button> | <button onClick={() => downvote(comment.comment_id)}>DOWNVOTE</button> |  
+         { username === comment.author ? <button onClick={() => deleter(comment.comment_id, comment.author)}>DELETE</button> : <></>}
         </li>
         </ul>
     </section>
