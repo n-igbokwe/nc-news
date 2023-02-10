@@ -26,7 +26,7 @@ function App() {
         <Route path="/articles/:article_id" element={<SingleArticle username={username} setUsername={setUsername}/>}></Route>
         <Route path="/articles/:topic" element={<ArticleContainer/>}></Route>
         <Route path="/user/" element={<User username={username} allUsers={allUsers} setAllUsers={setAllUsers} setUsername={setUsername}/>}></Route>
-          {/* //path=/* is a wild card and matches anything not specified */}
+        <Route path="/*" element={<ArticleContainer/>}></Route>
         <Route path="/topics" element={<TopicsPage/>}></Route>
         <Route path="/topics/:topic" element={<SingleTopicPage sortBy={sortBy} setOrderBy={setOrderBy} setSortBy={setSortBy} orderBy={orderBy}/>}></Route>
       </Routes>

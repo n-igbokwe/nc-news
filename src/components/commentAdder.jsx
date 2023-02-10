@@ -11,10 +11,6 @@ function CommentAdder({setArticleComments, article_id, username}) {
   const handleSubmit = (e) => {
     e.preventDefault();
     setClicked(true)
-    if (typeof newComment !== 'string'){
-      setClicked(false)
-      return
-    } else {
       postComment(article_id, username, newComment)
       .then(({data : {post}}) =>{
         setArticleComments((currComments) => {
@@ -29,7 +25,7 @@ function CommentAdder({setArticleComments, article_id, username}) {
   
     }
 
-    }
+    
   
 
 

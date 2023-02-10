@@ -4,7 +4,7 @@ import { useEffect} from 'react'
 import { getUser } from '../utils/api'
 
 function User({username, setUsername, allUsers, setAllUsers}) {
-  // const [currentUser, setCurrentUser] = useState({})
+
 
 
     useEffect(() => {

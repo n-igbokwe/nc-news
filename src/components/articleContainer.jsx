@@ -1,9 +1,9 @@
 import React from 'react'
 
-function ArticleContainer() {
+function Redirect() {
   return (
-    <div>articleContainer</div>
+    <div>Nothing to see here! Double-check you have the right link!</div>
   )
 }
 
-export default ArticleContainer
+export default Redirect
