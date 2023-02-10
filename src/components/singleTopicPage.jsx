@@ -32,7 +32,7 @@ function SingleTopicPage({sortBy, setSortBy, orderBy, setOrderBy}) {
             console.log(topicErr, "<<<")
 
         })
-    }, [sortBy, orderBy] )
+    }, [topic, sortBy, orderBy] )
 
     if(topicErr){
         return (

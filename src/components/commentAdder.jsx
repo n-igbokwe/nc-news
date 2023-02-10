@@ -6,28 +6,46 @@ function CommentAdder({setArticleComments, article_id, username}) {
 
 
   const [newComment, setNewComment] = useState([])
-
-  
+  const [clicked, setClicked] = useState(false)
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setClicked(true)
     postComment(article_id, username, newComment)
-    .then(({data: {post}}) =>{
+    .then(({data : {post}}) =>{
       setArticleComments((currComments) => {
         return [post, ...currComments]
       })
+      setClicked(false)
+      setNewComment('')
     })
     .catch((err) => {
-      console.log(err)
+      setClicked(false)
     })
 
   }
 
+ 
+
   return (
     <section>
-      <form onSubmit={handleSubmit} className="comment-adder">
+      { clicked === false ? <form onSubmit={handleSubmit} className="comment-adder">
       <p><label htmlFor="comments">Add to the conversation!</label> </p>
-      <textarea 
+     
+       <textarea 
+      name="newComment" 
+      id="newComment" 
+      cols="30" 
+      rows="6"
+      value={newComment}
+      onChange={(e) => setNewComment(e.target.value)}
+
+      ></textarea> 
+        <br></br>
+      <input type="submit" id="comment-Submit" name="commentSubmit" value="post"/>
+      </form> 
+       : <form onSubmit={handleSubmit} className="comment-adder">
+       <p><label htmlFor="comments">Add to the conversation!</label> </p><textarea disabled
       name="newComment" 
       id="newComment" 
       cols="30" 
@@ -37,19 +55,14 @@ function CommentAdder({setArticleComments, article_id, username}) {
 
       ></textarea>
       <br></br>
-      <input type="submit" id="comment-submit" name="comment-submit" value="post"/>
-      </form>
+      <input type="submit" id="comment-Submit" name="commentSubmit" value="posting"/>
+      </form>   }
+     
+    
+
       </section>
   )
 }
 
 export default CommentAdder
 
-
-// label> POST
-//         <input
-//         placeholder='comment'
-//         value={newComment}
-//         onChange={(e) => setNewComment(e.target.value)}
-//         />
-//     </label>
