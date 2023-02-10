@@ -22,7 +22,7 @@ function SingleTopicPage({sortBy, setSortBy, orderBy, setOrderBy}) {
             })
             setTopicArticles(newArticles)
         })
-    }, [sortBy, orderBy] )
+    }, [topic, sortBy, orderBy] )
 
   return (
     <section>
