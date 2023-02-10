@@ -6,6 +6,7 @@ import { getAllArticles } from '../utils/api';
 
 function SingleTopicPage({sortBy, setSortBy, orderBy, setOrderBy}) {
     const [topicArticles, setTopicArticles] = useState([])
+    const [topicErr, setTopicErr] = useState(null)
 
 
     const {topic} = useParams();
@@ -21,8 +22,25 @@ function SingleTopicPage({sortBy, setSortBy, orderBy, setOrderBy}) {
                 } 
             })
             setTopicArticles(newArticles)
+            if (newArticles.length === 0){
+                throw Error ('no articles found')
+            }
+        })
+        .catch((err) => {
+            console.log(err)
+            setTopicErr(err)
+            console.log(topicErr, "<<<")
+
         })
     }, [sortBy, orderBy] )
+
+    if(topicErr){
+        return (
+        <section>
+            <p> 404 - NO ARTICLES FOUND</p>
+        </section>
+        )
+    }
 
   return (
     <section>

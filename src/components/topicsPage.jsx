@@ -21,7 +21,7 @@ function TopicsPage() {
 
   return (
     <section>
-        <p>
+        <>
             {topics.map((topic, index) => {
                 return (
                     <> 
@@ -34,7 +34,7 @@ function TopicsPage() {
                     </>
                 )
             })}
-        </p>
+        </>
     </section>
 
   )

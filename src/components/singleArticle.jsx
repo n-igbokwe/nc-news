@@ -10,6 +10,7 @@ function  SingleArticle({username}) {
 
     const [singleArticle, setSingleArticle] = useState([])
     const [articleComments, setArticleComments] = useState([])
+    const [articleErr, setArticleErr] = useState(null)
     const {article_id} = useParams()
 
     useEffect(() => {
@@ -19,6 +20,7 @@ function  SingleArticle({username}) {
         })
         .catch((err) => {
           console.log(err)
+          setArticleErr(err)
         })
     }, [article_id])
 
@@ -59,6 +61,13 @@ function  SingleArticle({username}) {
       })
     }
 
+    if (articleErr){
+      return (
+        <section>
+          <p> 404 - Article Not Found </p>
+        </section>
+      )
+    }
 
   return (
     <section>

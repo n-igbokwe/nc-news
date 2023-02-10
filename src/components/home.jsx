@@ -7,10 +7,15 @@ import { Link } from 'react-router-dom'
 function Home({sortBy, setSortBy, orderBy, setOrderBy}) {
     const [allArticles, setAllArticles] = useState([])
 
+
     useEffect(() => {
         getAllArticlesHome(sortBy, orderBy)
         .then(({data : {articles}}) => {
             setAllArticles(articles)
+        })
+        .catch((err) => {
+            console.log(err);
+            // setHomeErr(err);
         })
     }, [sortBy, orderBy])
 
