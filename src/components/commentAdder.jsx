@@ -6,11 +6,11 @@ function CommentAdder({setArticleComments, article_id, username}) {
 
 
   const [newComment, setNewComment] = useState([])
-  const [username, setUsername] = useState('tickle122')
   const [clicked, setClicked] = useState(false)
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setClicked(true)
     postComment(article_id, username, newComment)
     .then(({data : {post}}) =>{
       setArticleComments((currComments) => {
