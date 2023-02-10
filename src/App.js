@@ -11,18 +11,21 @@ import TopicsPage from './components/topicsPage';
 import SingleTopicPage from './components/singleTopicPage';
 import {useState} from 'react'
 
+
 function App() {
   const [sortBy, setSortBy] = useState('title')
   const [orderBy, setOrderBy] = useState('desc')
+  const [username, setUsername] = useState("tickle122")
+  const [allUsers, setAllUsers] = useState([])
   return (
     <div className="App">
       <Header/>
       <Navbar/>
       <Routes>
         <Route path="/" element={<Home sortBy={sortBy} setOrderBy={setOrderBy} setSortBy={setSortBy} orderBy={orderBy}/>}></Route>
-        <Route path="/articles/:article_id" element={<SingleArticle/>}></Route>
+        <Route path="/articles/:article_id" element={<SingleArticle username={username} setUsername={setUsername}/>}></Route>
         <Route path="/articles/:topic" element={<ArticleContainer/>}></Route>
-        <Route path="/users/:user_id" element={<User/>}></Route>
+        <Route path="/user/" element={<User username={username} allUsers={allUsers} setAllUsers={setAllUsers} setUsername={setUsername}/>}></Route>
           {/* //path=/* is a wild card and matches anything not specified */}
         <Route path="/topics" element={<TopicsPage/>}></Route>
         <Route path="/topics/:topic" element={<SingleTopicPage sortBy={sortBy} setOrderBy={setOrderBy} setSortBy={setSortBy} orderBy={orderBy}/>}></Route>
