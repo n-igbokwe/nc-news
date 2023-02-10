@@ -2,7 +2,7 @@ import React from 'react'
 import { useState} from 'react'
 import { postComment } from '../utils/api';
 
-function CommentAdder({setArticleComments, article_id}) {
+function CommentAdder({setArticleComments, article_id, username}) {
 
 
   const [newComment, setNewComment] = useState([])

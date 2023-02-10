@@ -95,3 +95,19 @@ export const getTopics = () => {
     })
 }
 
+
+export const getUser = () => {
+    return articleAPI
+    .get(`/users`)
+    .then(({data}) => {
+        return data
+    })
+}
+
+export const deleteComment = (comment_id, user) => {
+    return articleAPI
+    .delete(`comments/${comment_id}`)
+    .then(({data}) =>{
+        return data
+    })
+}
