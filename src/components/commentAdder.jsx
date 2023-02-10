@@ -11,21 +11,27 @@ function CommentAdder({setArticleComments, article_id, username}) {
   const handleSubmit = (e) => {
     e.preventDefault();
     setClicked(true)
-    postComment(article_id, username, newComment)
-    .then(({data : {post}}) =>{
-      setArticleComments((currComments) => {
-        return [post, ...currComments]
+    if (typeof newComment !== 'string'){
+      setClicked(false)
+      return
+    } else {
+      postComment(article_id, username, newComment)
+      .then(({data : {post}}) =>{
+        setArticleComments((currComments) => {
+          return [post, ...currComments]
+        })
+        setClicked(false)
+        setNewComment('')
       })
-      setClicked(false)
-      setNewComment('')
-    })
-    .catch((err) => {
-      setClicked(false)
-    })
+      .catch((err) => {
+        setClicked(false)
+      })
+  
+    }
 
-  }
+    }
+  
 
- 
 
   return (
     <section>
@@ -37,6 +43,7 @@ function CommentAdder({setArticleComments, article_id, username}) {
       id="newComment" 
       cols="30" 
       rows="6"
+      required
       value={newComment}
       onChange={(e) => setNewComment(e.target.value)}
 
@@ -55,7 +62,7 @@ function CommentAdder({setArticleComments, article_id, username}) {
 
       ></textarea>
       <br></br>
-      <input type="submit" id="comment-Submit" name="commentSubmit" value="posting"/>
+      <input type="submit" id="comment-Submit" name="commentSubmit" value="posting" />
       </form>   }
      
     
