@@ -2,24 +2,13 @@ import React from 'react'
 import {useEffect, useState} from 'react'
 import {  getAllArticlesHome } from '../utils/api'
 import { Link } from 'react-router-dom'
-// import '../styles/home.css'
-// import '../styles/app.scss'
-import '../styles/_homer.scss'
-import PostMasonary from './common'
 
-// import '../styles/home.scss'
-// import '../styles/header.scss'
+import '../styles/_homer.scss'
+
 
 
 function Home({sortBy, setSortBy, orderBy, setOrderBy}) {
 
-    const settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1
-    }
 
     const [allArticles, setAllArticles] = useState([])
 

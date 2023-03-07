@@ -1,5 +1,4 @@
 import React from 'react'
-import DeleteComment from './deleteComment'
 import { useEffect} from 'react'
 import { getUser } from '../utils/api'
 
@@ -18,7 +17,7 @@ function User({username, setUsername, allUsers, setAllUsers}) {
         return user
         })
       })
-    }, [username])
+    }, [username, setAllUsers, setUsername])
 
     const changeUser = (e) =>{
       const newUser = allUsers.filter((user) => {
@@ -31,7 +30,6 @@ function User({username, setUsername, allUsers, setAllUsers}) {
   return (
     <section>
     <h2>{username.username}'s settings page</h2>
-    {/* <DeleteComment /> */}
     <label htmlFor='users'> Change User: </label>
     <select name="users" id="users" onChange={changeUser}>
       {allUsers.map((user, index) => {
