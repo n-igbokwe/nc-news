@@ -1,8 +1,11 @@
 import React from 'react'
-
+import Navbar from './navbar'
+import '../styles/header.scss'
 function Header() {
   return (
-    <h1> Welcome to NC-NEWS</h1>
+    <div className='header'>
+    <Navbar/>
+    </div>
   )
 }
 

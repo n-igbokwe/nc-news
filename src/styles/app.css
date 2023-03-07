@@ -1,0 +1,78 @@
+.home h3 {
+  width: 100%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+}
+
+.contianer-home {
+  max-width: 948px;
+  margin: 4em auto;
+  padding: 4em;
+  background: #fff;
+  border-radius: 1em;
+}
+
+img {
+  max-width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+}
+
+.title:visited {
+  color: blue;
+}
+
+.topic:visited {
+  color: blue;
+}
+
+.autor:visited {
+  color: blue;
+}
+
+.title:hover {
+  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+
+.topic:hover {
+  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+
+.author:hover {
+  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+
+.title {
+  grid-column: 1/3;
+  grid-row: 1;
+}
+
+.masonary-post {
+  display: block;
+  position: relative;
+  border-radius: 5px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center center;
+  height: 100%;
+  text-decoration: none;
+  margin: 0 auto;
+  width: 100%;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}/*# sourceMappingURL=app.css.map */

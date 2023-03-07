@@ -1,16 +1,20 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import '../styles/navbar.scss'
 
-function Navbar() {
+function Navbar(){
   return (
-    <nav className='Nav'>
-      <Link to="/">
-        Home    </Link>
-      <Link to="/topics">
-            Topics      </Link>
-      <Link to="/user">
-             User      </Link>
-
+    <nav>
+        <ul className='ul-items'>
+            <li className='li-items'>
+              <Link className='orange' to="/">Home</Link>
+              <Link to="/topics">Topics</Link>
+              <Link to="/user">User</Link>
+            </li>
+        </ul>
+        <div className="logo">
+          <h1>NC-NEWS</h1>
+        </div>
     </nav>
   )
 }

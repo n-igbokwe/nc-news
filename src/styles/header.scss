@@ -1,0 +1,56 @@
+
+@import './colours';
+@import './mixins';
+@import './fonts';
+
+.header{
+    position: sticky;
+    top: 0;
+
+    nav {
+
+        @include flex-center();
+        justify-content: space-between;
+        height: 4rem;
+        background-color: $main-colour;
+
+        .ul-items {
+            list-style: none;
+            
+
+
+            .li-items {
+                a {
+                    text-decoration: none;
+                    color: $secondary-color;
+                    margin: 0 1rem;
+                    font-size: 15px;
+                }
+
+                .orange {
+                    color: $orange;
+                }
+            }
+        }
+
+        .logo {
+            text-transform : uppercase;
+            margin-right: 2rem;
+            font-family: $font-roboto;
+        }
+
+        .right {
+            @include flex-center
+        }
+    }
+}
+
+.btn {
+    margin: 0 1rem;
+    background: none;
+    border-width: thin;
+    cursor: pointer;
+    font-family: $font-roboto-mid;
+    margin-right: 1rem
+
+}

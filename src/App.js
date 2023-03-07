@@ -3,7 +3,6 @@ import './App.css';
 import ArticleContainer from './components/articleContainer';
 import Header from './components/header';
 import Home from './components/home';
-import Navbar from './components/navbar';
 import SingleArticle from './components/singleArticle';
 import User from './components/user';
 import {Route, Routes} from 'react-router-dom'
@@ -20,7 +19,6 @@ function App() {
   return (
     <div className="App">
       <Header/>
-      <Navbar/>
       <Routes>
         <Route path="/" element={<Home sortBy={sortBy} setOrderBy={setOrderBy} setSortBy={setSortBy} orderBy={orderBy}/>}></Route>
         <Route path="/articles/:article_id" element={<SingleArticle username={username} setUsername={setUsername}/>}></Route>
