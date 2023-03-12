@@ -2,7 +2,7 @@ import axios from "axios";
 const articleAPI = axios.create({
     baseURL: 'https://be-news-api.onrender.com/api/'
 })
-//ticket 4
+
 export const getAllArticles = (topic, sortBy, orderBy) => {
     return articleAPI
     .get('/articles', {
@@ -28,7 +28,8 @@ export const getAllArticlesHome = ( sortBy, orderBy) => {
         return data
     })
 }
-//ticket5
+
+
 export const getSingleArticle = (article_id) => {
     return articleAPI
     .get(`/articles/${article_id}`)
@@ -38,7 +39,7 @@ export const getSingleArticle = (article_id) => {
   
 }
 
-//ticket6
+
 
 export const getCommeentsWithArticleId = (article_id) => {
     return articleAPI
@@ -49,7 +50,7 @@ export const getCommeentsWithArticleId = (article_id) => {
    
 }
 
-// ticket7
+
 export const upvoteArticletWithId = (article_id) => {
     return articleAPI
     .patch(`/articles/${article_id}`,
@@ -72,7 +73,7 @@ export const downvoteArticletWithId = (article_id) => {
   
 }
 
-//ticket 8 (i got the numbers wrong)
+
 export const postComment = (article_id, user, comment) => {
     const postBody = {username : user,
         comment: comment}

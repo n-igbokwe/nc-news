@@ -6,10 +6,6 @@ import { deleteComment } from '../utils/api'
 function Comments({comment, setArticleComments, username}) {
 
 
-  
-
-//this only changes comment votes on the site and not AP
-
     const upvote = (id) => {
         setArticleComments((currComments) => {
             return currComments.map((comment) => {

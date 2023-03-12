@@ -2,7 +2,6 @@ import React from 'react'
 import {useEffect, useState} from 'react'
 import {  getAllArticlesHome } from '../utils/api'
 import { Link } from 'react-router-dom'
-
 import '../styles/_homer.scss'
 
 
@@ -20,7 +19,6 @@ function Home({sortBy, setSortBy, orderBy, setOrderBy}) {
         })
         .catch((err) => {
             console.log(err);
-            // setHomeErr(err);
         })
     }, [sortBy, orderBy])
 
@@ -52,9 +50,9 @@ function Home({sortBy, setSortBy, orderBy, setOrderBy}) {
           {article.topic}  
         </Link>
         <br></br>
-        <Link classname="author" to={`/users/${article.author}`}>
-            {article.author}
-        </Link>
+        <p classname="author">
+            by {article.author}
+        </p>
         <br></br>
         </div>
         <img classname="box" src={article.article_img_url} alt={article.title}></img>
@@ -72,24 +70,3 @@ function Home({sortBy, setSortBy, orderBy, setOrderBy}) {
 }
 
 export default Home
-
-
-// return (
-//     <li key={article.article_id} classsName="main-list-items">
-//         <div className='overlay'>
-//         <Link className="title" to={`/articles/${article.article_id}`}>
-//         {article.title}
-//         </Link>
-//         <br></br>
-//         <Link classname="topic" to={`/topics/${article.topic}`}>
-//           {article.topic}  
-//         </Link>
-//         <br></br>
-//         <Link to={`/users/${article.author}`}>
-//             {article.author}
-//         </Link>
-//         <br></br>
-//         </div>
-//         <img classname="box" src={article.article_img_url} alt={article.title}></img>
-//         <p>Votes :{article.votes} | Comments: {article.comment_count} </p>
-//     </li>

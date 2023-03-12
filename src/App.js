@@ -1,6 +1,6 @@
 
 import './App.css';
-import ArticleContainer from './components/articleContainer';
+import Redirect from './components/redirect';
 import Header from './components/header';
 import Home from './components/home';
 import SingleArticle from './components/singleArticle';
@@ -22,9 +22,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home sortBy={sortBy} setOrderBy={setOrderBy} setSortBy={setSortBy} orderBy={orderBy}/>}></Route>
         <Route path="/articles/:article_id" element={<SingleArticle username={username} setUsername={setUsername}/>}></Route>
-        <Route path="/articles/:topic" element={<ArticleContainer/>}></Route>
+        <Route path="/articles/:topic" element={<Redirect/>}></Route>
         <Route path="/user/" element={<User username={username} allUsers={allUsers} setAllUsers={setAllUsers} setUsername={setUsername}/>}></Route>
-        <Route path="/*" element={<ArticleContainer/>}></Route>
+        <Route path="/*" element={<Redirect/>}></Route>
         <Route path="/topics" element={<TopicsPage/>}></Route>
         <Route path="/topics/:topic" element={<SingleTopicPage sortBy={sortBy} setOrderBy={setOrderBy} setSortBy={setSortBy} orderBy={orderBy}/>}></Route>
       </Routes>

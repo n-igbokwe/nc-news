@@ -70,24 +70,28 @@ function  SingleArticle({username}) {
     }
 
   return (
-    <section>
+    <section className='article-post-container'>
         {singleArticle.length !== 0 ? (
             singleArticle.map((article) =>
             <>
-            <h2 key={article.article_id}>{article.title}</h2>
-            <Link to={`/topics/${article.topic}`}>Topic: {article.topic}
+            <div className='article-post-data'>
+            <h2 className='article-post-title' key={article.article_id}>{article.title}</h2>
+            <Link className='data' to={`/topics/${article.topic}`}>Topic: {article.topic}
             </Link>
             <br></br>
             <br></br>
-            <Link to={`/articles/${article.author}`}>
-                Posted By: {article.author}
-            </Link>
+            <div className='article-data'>
+                <span>Posted By: {article.author}</span>
+                <p className='article-data-spacer'></p>
+                <span> 5 min read</span>
+            </div>
             <br></br>
             <br></br>
-            <img src={article.article_img_url} alt={article.title}></img>
-            <h3>{article.body}</h3>
+            <img className='img' src={article.article_img_url} alt={article.title}></img>
+            <blockquote className='article-body-container'>{article.body}</blockquote>
             <h4> Published : {article.created_at}</h4>
             <h4>Votes :{article.votes} | Comments: {article.comment_count} </h4>
+            </div>
             <button onClick={() => upvote(article.article_id)}>UPVOTE</button> | <button onClick={() => downvote(article.article_id)}>DOWNVOTE</button>
             <CommentAdder setArticleComments={setArticleComments} article_id={article_id} username={username}/>
             <section>
