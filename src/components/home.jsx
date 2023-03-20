@@ -2,7 +2,11 @@ import React from 'react'
 import {useEffect, useState} from 'react'
 import {  getAllArticlesHome } from '../utils/api'
 import { Link } from 'react-router-dom'
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 import '../styles/_homer.scss'
+import Slide from './slide'
+
 
 
 
@@ -33,7 +37,12 @@ function Home({sortBy, setSortBy, orderBy, setOrderBy}) {
         <button className='btn' onClick={() => setOrderBy('asc')}>asending</button>
         <button className='btn' onClick={() => setOrderBy('desc')}>descending</button>
     <div classsName='row'> 
-    <h4> TRENDING POSTS</h4>
+    <br></br>
+    <div className='slider'>
+    <Slide allArticles={allArticles}/>
+    </div>
+    <br></br>
+    <br></br>
     <ul className='gridcheck'>
         <div className='wrapper'>
     {allArticles.map((article) => {
