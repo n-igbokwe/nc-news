@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState} from 'react'
 import { postComment } from '../utils/api';
+import '../styles/_comments.scss'
 
 function CommentAdder({setArticleComments, article_id, username}) {
 
@@ -30,8 +31,9 @@ function CommentAdder({setArticleComments, article_id, username}) {
 
 
   return (
-    <section>
+    <section className='psedobutton'>
       { clicked === false ? <form onSubmit={handleSubmit} className="comment-adder">
+        <br></br>
       <p><label htmlFor="comments">Add to the conversation!</label> </p>
      
        <textarea 
@@ -45,7 +47,7 @@ function CommentAdder({setArticleComments, article_id, username}) {
 
       ></textarea> 
         <br></br>
-      <input type="submit" id="comment-Submit" name="commentSubmit" value="post"/>
+      <input type="submit" id="comment-Submit" className="commentSubmit" value="post"/>
       </form> 
        : <form onSubmit={handleSubmit} className="comment-adder">
        <p><label htmlFor="comments">Add to the conversation!</label> </p><textarea disabled
